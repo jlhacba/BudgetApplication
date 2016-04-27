@@ -17,9 +17,6 @@ namespace BudgetApp.Controllers
         // GET: Budgets
         public ActionResult Index()
         {
-            var cats = db.Categories.Where(c => c.BudgetID == 1);
-
-            ViewBag.Total = cats.Sum(c => c.BudgetCost);
 
             return View(db.Budgets.ToList());
         }

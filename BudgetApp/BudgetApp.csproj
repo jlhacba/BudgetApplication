@@ -191,6 +191,14 @@
     <Compile Include="Migrations\201604271442108_nolist.Designer.cs">
       <DependentUpon>201604271442108_nolist.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201604271822492_catlist.cs" />
+    <Compile Include="Migrations\201604271822492_catlist.Designer.cs">
+      <DependentUpon>201604271822492_catlist.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201604271837487_catcolortoTpe.cs" />
+    <Compile Include="Migrations\201604271837487_catcolortoTpe.Designer.cs">
+      <DependentUpon>201604271837487_catcolortoTpe.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Budget.cs" />
@@ -301,6 +309,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201604271442108_nolist.resx">
       <DependentUpon>201604271442108_nolist.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201604271822492_catlist.resx">
+      <DependentUpon>201604271822492_catlist.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201604271837487_catcolortoTpe.resx">
+      <DependentUpon>201604271837487_catcolortoTpe.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

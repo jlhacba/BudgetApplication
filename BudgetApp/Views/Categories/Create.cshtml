@@ -32,15 +32,20 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.CatColor, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.Label("Type", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.CatColor, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.CatColor, "", new { @class = "text-danger" })
+                <select name="type" style="color:black">
+
+                    <option value="Red">Rent</option>
+                    <option value="Blue">Utility</option>
+                    <option value="Green">Food</option>
+                </select>
+                <span class="required"></span>
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.BudgetID, "BudgetID", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.BudgetID, "Budget", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.DropDownList("BudgetID", null, htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.BudgetID, "", new { @class = "text-danger" })

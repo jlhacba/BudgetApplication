@@ -38,7 +38,7 @@
             @Html.DisplayFor(modelItem => item.EndDate)
         </td>
         <td>
-            @ViewBag.Total
+            @item.Categories.Sum(c => c.BudgetCost)
         </td>
         <td>
             @Html.ActionLink("Add Category","Create","Categories") |
