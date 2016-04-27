@@ -16,6 +16,7 @@ namespace BudgetApp.Models
         [DisplayFormat(DataFormatString = "{0:MM/dd/yyyy}")]
         public DateTime DateRecorded { get; set; }
         public decimal Cost { get; set; }
+        public int CategoryID { get; set; }
         public virtual Category Category { get; set; }
     }
 }
