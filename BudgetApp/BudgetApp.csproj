@@ -164,6 +164,23 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201604270444543_newbuild.cs" />
+    <Compile Include="Migrations\201604270444543_newbuild.Designer.cs">
+      <DependentUpon>201604270444543_newbuild.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201604271407058_relationalchange.cs" />
+    <Compile Include="Migrations\201604271407058_relationalchange.Designer.cs">
+      <DependentUpon>201604271407058_relationalchange.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201604271408594_catsingular.cs" />
+    <Compile Include="Migrations\201604271408594_catsingular.Designer.cs">
+      <DependentUpon>201604271408594_catsingular.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201604271411499_catcolor.cs" />
+    <Compile Include="Migrations\201604271411499_catcolor.Designer.cs">
+      <DependentUpon>201604271411499_catcolor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Budget.cs" />
     <Compile Include="Models\Category.cs" />
@@ -239,6 +256,20 @@
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201604270444543_newbuild.resx">
+      <DependentUpon>201604270444543_newbuild.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201604271407058_relationalchange.resx">
+      <DependentUpon>201604271407058_relationalchange.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201604271408594_catsingular.resx">
+      <DependentUpon>201604271408594_catsingular.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201604271411499_catcolor.resx">
+      <DependentUpon>201604271411499_catcolor.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
