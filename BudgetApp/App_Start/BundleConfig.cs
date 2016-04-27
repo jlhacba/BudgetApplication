@@ -23,6 +23,9 @@ namespace BudgetApp
                       "~/Scripts/bootstrap.js",
                       "~/Scripts/respond.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/highcharts").IncludeDirectory(
+                "~/scripts/highcharts", "*.4.2.0", true));
+
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));
