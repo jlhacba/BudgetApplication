@@ -12,7 +12,7 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Budget.Name)
+            Budget
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Name)
@@ -41,7 +41,7 @@
             @Html.DisplayFor(modelItem => item.BudgetCost)
         </td>
         <td>
-            @(item.BudgetCost - item.Expenses.Select(e => e.Cost).Sum())
+            @(item.BudgetCost - item.Expenses.Where(e => e.DateRecorded.Year == DateTime.Today.Year).Where(e => e.DateRecorded.Month == DateTime.Today.Month).Select(e => e.Cost).Sum())
             
         </td>
         <td>
