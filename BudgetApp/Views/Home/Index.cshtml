@@ -2,6 +2,42 @@
     ViewBag.Title = "Home Page";
 }
 
+<script src="~/Scripts/morris.js"></script>
+<script src="~/Scripts/morris.min.js"></script>
+<link href="~/Content/morris.css" rel="stylesheet" />
+@Styles.Render("~/Content/morrisCSS")
+@Styles.Render("~/Scripts/morris.js")
+
+<div id="box2">
+    <div>
+        <h1>What you've done</h1>
+        <div id="completedDonut"></div>
+        <script>
+                    $.ajax({
+                        url: '/Home/GetCompleted/',
+                        type: "POST",
+                        dataType: "json",
+                        success: function (result) {
+                            Morris.Donut({
+                                element: 'completedDonut',
+                                data: result,
+                                height: 20,
+                                wide: 20,
+                                labelColor: 'rgba(200,200,200)',
+                                colors: [
+                                    '#4BD762',
+                                    '#FF402C'
+                                ],
+                            });
+                        },
+                        error: function () {
+                            alert("Error loading data! Please try again.");
+                        }
+                    });
+        </script>
+    </div>
+</div>
+
 <div class="jumbotron">
     <h1>ASP.NET</h1>
     <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
