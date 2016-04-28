@@ -16,23 +16,31 @@ namespace BudgetApp.Controllers
         public ActionResult GetCompleted()
         {
             var pf = new List<Donut>();
+            
+            foreach (var c in db.Categories)
+            {
+                var newDonut = new Donut();
+                newDonut.value = c.BudgetCost.ToString();
+                newDonut.label = c.Type;
+                pf.Add(newDonut);
+            }
 
-            var pass = new Donut();
-            pass.label = "Completed";
-            pass.value = "28";
+            //var pass = new Donut();
+            //pass.label = "Completed";
+            //pass.value = "28";
 
-            var fail = new Donut();
-            fail.label = "Yet to Complete";
+            //var fail = new Donut();
+            //fail.label = "Yet to Complete";
 
-            var good = new Donut();
-            good.label = "Good!";
-            good.value = "300";
+            //var good = new Donut();
+            //good.label = "Good!";
+            //good.value = "300";
            
-            fail.value = (db.Categories.Count().ToString());
+            //fail.value = (db.Categories.Count().ToString());
 
-            pf.Add(pass);
-            pf.Add(fail);
-            pf.Add(good);
+            //pf.Add(pass);
+            //pf.Add(fail);
+            //pf.Add(good);
 
             return Json(pf, JsonRequestBehavior.AllowGet);
         }
