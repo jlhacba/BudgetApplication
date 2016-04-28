@@ -13,7 +13,7 @@ namespace BudgetApp.Controllers
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        public ActionResult GetCompleted()
+        public ActionResult BudgetChart()
         {
             var pf = new List<Donut>();
             
@@ -24,23 +24,6 @@ namespace BudgetApp.Controllers
                 newDonut.label = c.Type;
                 pf.Add(newDonut);
             }
-
-            //var pass = new Donut();
-            //pass.label = "Completed";
-            //pass.value = "28";
-
-            //var fail = new Donut();
-            //fail.label = "Yet to Complete";
-
-            //var good = new Donut();
-            //good.label = "Good!";
-            //good.value = "300";
-           
-            //fail.value = (db.Categories.Count().ToString());
-
-            //pf.Add(pass);
-            //pf.Add(fail);
-            //pf.Add(good);
 
             return Json(pf, JsonRequestBehavior.AllowGet);
         }
