@@ -199,6 +199,10 @@
     <Compile Include="Migrations\201604271837487_catcolortoTpe.Designer.cs">
       <DependentUpon>201604271837487_catcolortoTpe.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201604282224454_displaynames.cs" />
+    <Compile Include="Migrations\201604282224454_displaynames.Designer.cs">
+      <DependentUpon>201604282224454_displaynames.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Budget.cs" />
@@ -363,6 +367,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201604271837487_catcolortoTpe.resx">
       <DependentUpon>201604271837487_catcolortoTpe.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201604282224454_displaynames.resx">
+      <DependentUpon>201604282224454_displaynames.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

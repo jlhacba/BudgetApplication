@@ -4,7 +4,7 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>Categories</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
@@ -19,6 +19,9 @@
         </th>
         <th>
             @Html.DisplayNameFor(model => model.BudgetCost)
+        </th>
+        <th>
+            Budget Remaining
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Type)
@@ -36,6 +39,10 @@
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.BudgetCost)
+        </td>
+        <td>
+            @(item.BudgetCost - item.Expenses.Select(e => e.Cost).Sum())
+            
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Type)

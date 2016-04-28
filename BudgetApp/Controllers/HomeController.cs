@@ -30,6 +30,9 @@ namespace BudgetApp.Controllers
 
         public ActionResult Index()
         {
+            var totalBudget = db.Categories.Select(c => c.BudgetCost).Sum();
+            ViewBag.TotalBudget = totalBudget;
+
             return View();
         }
 
