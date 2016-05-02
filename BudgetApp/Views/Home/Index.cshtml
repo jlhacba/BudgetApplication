@@ -48,4 +48,39 @@
         </div>
     </div>
     </body>
+
+<body>
+    <div id="box2">
+        <div>
+            <p style="position: center">
+                <h1 style="font-weight: bold">Budget Left</h1>
+            </p>
+            <div id="completedBarStacked"></div>
+            <script>
+                $.ajax({
+                    url: '/Home/BudgetBarStacked/',
+                    type: "POST",
+                    dataType: "json",
+                    success: function (result) {
+                        Morris.Bar({
+                            element: 'completedBarStacked',
+                            stacked: true,
+                            data: result,
+                            xkey: 'xkey',
+                            ykeys: ['ykey1', 'ykey2'],
+                            labels: ['Series A', 'Series B'],
+                            barColors: [
+                                '#A9F5A9',
+                                '#5882FA'
+                            ],
+                        });
+                    },
+                    error: function () {
+                        alert("Error loading data! Please try again.");
+                    }
+                });
+            </script>
+        </div>
+    </div>
+</body>
   

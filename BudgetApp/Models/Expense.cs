@@ -14,6 +14,8 @@ namespace BudgetApp.Models
 
         [DataType(DataType.MultilineText)]
         public string Description { get; set; }
+
+        [DataType(DataType.Date, ErrorMessage = "Must be a valid Date")]
         [DisplayFormat(DataFormatString = "{0:MM/dd/yyyy}")]
         [DisplayName ("Date Recorded")]
         public DateTime DateRecorded { get; set; }

@@ -28,6 +28,29 @@ namespace BudgetApp.Controllers
             return Json(pf, JsonRequestBehavior.AllowGet);
         }
 
+        public ActionResult BudgetBarStacked()
+        {
+            var bs = new List<StackedBar>();
+
+            foreach (var c in db.Categories)
+            {
+                var newStackedBar = new StackedBar();
+                newStackedBar.xkey = c.Name.ToString();
+                newStackedBar.ykey1 = "0";
+                newStackedBar.ykey2 = "25";
+ 
+                    
+             
+                    //if (c.Expenses == null)
+                    //{"0"}
+                    //else
+                    //    c.Expenses.Where(e => e.DateRecorded.Year == DateTime.Today.Year).Where(e => e.DateRecorded.Month == DateTime.Today.Month).Select(e => e.Cost).Sum().ToString();
+                bs.Add(newStackedBar);
+            }
+
+            return Json(bs, JsonRequestBehavior.AllowGet);
+        }
+
         public ActionResult Index()
         {
             var totalBudget = db.Categories.Select(c => c.BudgetCost).Sum();
