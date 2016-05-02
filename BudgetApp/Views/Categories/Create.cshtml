@@ -15,11 +15,21 @@
         <h4>Category</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+
         <div class="form-group">
-            @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.Label("Type", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                <select name="type" style="color:black">
+
+                    <option value="Rent">Rent</option>
+                    <option value="Utility">Utility</option>
+                    <option value="Groceries">Groceries</option>
+                    <option value="Restaurants">Restaurants</option>
+                    <option value="Household Goods">Household Goods</option>
+                    <option value="Pet">Pet</option>
+                </select>
+                <span class="required"></span>
             </div>
         </div>
 
@@ -31,19 +41,6 @@
             </div>
         </div>
 
-        <div class="form-group">
-            @Html.Label("Type", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                <select name="type" style="color:black">
-
-                    <option value="Rent">Rent</option>
-                    <option value="Utility">Utility</option>
-                    <option value="Food">Food</option>
-                    <option value="Restaurants">Restaurants</option>
-                </select>
-                <span class="required"></span>
-            </div>
-        </div>
 
         <div class="form-group">
             @Html.LabelFor(model => model.BudgetID, "Budget", htmlAttributes: new { @class = "control-label col-md-2" })

@@ -41,22 +41,10 @@ namespace BudgetApp.Controllers
 
 
                 var newStackedBar = new StackedBar();
-                newStackedBar.xkey = c.Name.ToString();
+                newStackedBar.xkey = c.Type.ToString();
+               // newStackedBar.xkey = "a[href^='http://stackoverflow.com']";
                 newStackedBar.ykey1 = budgetLeft.ToString() ;
                 newStackedBar.ykey2 = expenses.ToString();
-
-
-
-                //if (c.Expenses != null)
-                //{
-                //    newStackedBar.ykey2 = c.Expenses.Where(e => e.DateRecorded.Year == DateTime.Today.Year).Where(e => e.DateRecorded.Month == DateTime.Today.Month).Select(e => e.Cost).Sum().ToString();
-
-                //}
-                //else
-                //{
-                //    newStackedBar.ykey2 = "0";
-
-                //}
                     
                 bs.Add(newStackedBar);
             }
