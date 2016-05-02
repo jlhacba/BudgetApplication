@@ -7,13 +7,13 @@ namespace BudgetApp.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class catcolortoTpe : IMigrationMetadata
+    public sealed partial class newdb : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(catcolortoTpe));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(newdb));
         
         string IMigrationMetadata.Id
         {
-            get { return "201604271837487_catcolortoTpe"; }
+            get { return "201605021902433_newdb"; }
         }
         
         string IMigrationMetadata.Source

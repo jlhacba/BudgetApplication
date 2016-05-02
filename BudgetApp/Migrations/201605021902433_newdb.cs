@@ -3,7 +3,7 @@ namespace BudgetApp.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class newbuild : DbMigration
+    public partial class newdb : DbMigration
     {
         public override void Up()
         {
@@ -25,11 +25,12 @@ namespace BudgetApp.Migrations
                         CategoryID = c.Int(nullable: false, identity: true),
                         Name = c.String(),
                         BudgetCost = c.Decimal(nullable: false, precision: 18, scale: 2),
-                        Budget_BudgetID = c.Int(),
+                        Type = c.String(),
+                        BudgetID = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.CategoryID)
-                .ForeignKey("dbo.Budgets", t => t.Budget_BudgetID)
-                .Index(t => t.Budget_BudgetID);
+                .ForeignKey("dbo.Budgets", t => t.BudgetID, cascadeDelete: true)
+                .Index(t => t.BudgetID);
             
             CreateTable(
                 "dbo.Expenses",
@@ -40,8 +41,11 @@ namespace BudgetApp.Migrations
                         Description = c.String(),
                         DateRecorded = c.DateTime(nullable: false),
                         Cost = c.Decimal(nullable: false, precision: 18, scale: 2),
+                        CategoryID = c.Int(nullable: false),
                     })
-                .PrimaryKey(t => t.ExpenseID);
+                .PrimaryKey(t => t.ExpenseID)
+                .ForeignKey("dbo.Categories", t => t.CategoryID, cascadeDelete: true)
+                .Index(t => t.CategoryID);
             
             CreateTable(
                 "dbo.AspNetRoles",
@@ -119,14 +123,16 @@ namespace BudgetApp.Migrations
             DropForeignKey("dbo.AspNetUserLogins", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserClaims", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserRoles", "RoleId", "dbo.AspNetRoles");
-            DropForeignKey("dbo.Categories", "Budget_BudgetID", "dbo.Budgets");
+            DropForeignKey("dbo.Expenses", "CategoryID", "dbo.Categories");
+            DropForeignKey("dbo.Categories", "BudgetID", "dbo.Budgets");
             DropIndex("dbo.AspNetUserLogins", new[] { "UserId" });
             DropIndex("dbo.AspNetUserClaims", new[] { "UserId" });
             DropIndex("dbo.AspNetUsers", "UserNameIndex");
             DropIndex("dbo.AspNetUserRoles", new[] { "RoleId" });
             DropIndex("dbo.AspNetUserRoles", new[] { "UserId" });
             DropIndex("dbo.AspNetRoles", "RoleNameIndex");
-            DropIndex("dbo.Categories", new[] { "Budget_BudgetID" });
+            DropIndex("dbo.Expenses", new[] { "CategoryID" });
+            DropIndex("dbo.Categories", new[] { "BudgetID" });
             DropTable("dbo.AspNetUserLogins");
             DropTable("dbo.AspNetUserClaims");
             DropTable("dbo.AspNetUsers");

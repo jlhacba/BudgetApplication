@@ -167,41 +167,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201604270444543_newbuild.cs" />
-    <Compile Include="Migrations\201604270444543_newbuild.Designer.cs">
-      <DependentUpon>201604270444543_newbuild.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201604271407058_relationalchange.cs" />
-    <Compile Include="Migrations\201604271407058_relationalchange.Designer.cs">
-      <DependentUpon>201604271407058_relationalchange.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201604271408594_catsingular.cs" />
-    <Compile Include="Migrations\201604271408594_catsingular.Designer.cs">
-      <DependentUpon>201604271408594_catsingular.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201604271411499_catcolor.cs" />
-    <Compile Include="Migrations\201604271411499_catcolor.Designer.cs">
-      <DependentUpon>201604271411499_catcolor.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201604271439188_foreignkeyID.cs" />
-    <Compile Include="Migrations\201604271439188_foreignkeyID.Designer.cs">
-      <DependentUpon>201604271439188_foreignkeyID.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201604271442108_nolist.cs" />
-    <Compile Include="Migrations\201604271442108_nolist.Designer.cs">
-      <DependentUpon>201604271442108_nolist.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201604271822492_catlist.cs" />
-    <Compile Include="Migrations\201604271822492_catlist.Designer.cs">
-      <DependentUpon>201604271822492_catlist.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201604271837487_catcolortoTpe.cs" />
-    <Compile Include="Migrations\201604271837487_catcolortoTpe.Designer.cs">
-      <DependentUpon>201604271837487_catcolortoTpe.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201604282224454_displaynames.cs" />
-    <Compile Include="Migrations\201604282224454_displaynames.Designer.cs">
-      <DependentUpon>201604282224454_displaynames.cs</DependentUpon>
+    <Compile Include="Migrations\201605021902433_newdb.cs" />
+    <Compile Include="Migrations\201605021902433_newdb.Designer.cs">
+      <DependentUpon>201605021902433_newdb.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -345,32 +313,8 @@
     <None Include="Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201604270444543_newbuild.resx">
-      <DependentUpon>201604270444543_newbuild.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201604271407058_relationalchange.resx">
-      <DependentUpon>201604271407058_relationalchange.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201604271408594_catsingular.resx">
-      <DependentUpon>201604271408594_catsingular.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201604271411499_catcolor.resx">
-      <DependentUpon>201604271411499_catcolor.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201604271439188_foreignkeyID.resx">
-      <DependentUpon>201604271439188_foreignkeyID.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201604271442108_nolist.resx">
-      <DependentUpon>201604271442108_nolist.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201604271822492_catlist.resx">
-      <DependentUpon>201604271822492_catlist.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201604271837487_catcolortoTpe.resx">
-      <DependentUpon>201604271837487_catcolortoTpe.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201604282224454_displaynames.resx">
-      <DependentUpon>201604282224454_displaynames.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201605021902433_newdb.resx">
+      <DependentUpon>201605021902433_newdb.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

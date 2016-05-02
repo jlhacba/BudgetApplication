@@ -32,19 +32,30 @@ namespace BudgetApp.Controllers
         {
             var bs = new List<StackedBar>();
 
-            foreach (var c in db.Categories)
+            foreach (var c in db.Categories.Include("Expenses"))
             {
+
+
+                //var value = c.Expenses.Count();
+
                 var newStackedBar = new StackedBar();
                 newStackedBar.xkey = c.Name.ToString();
-                newStackedBar.ykey1 = "0";
-                newStackedBar.ykey2 = "25";
- 
+                newStackedBar.ykey1 = c.BudgetCost.ToString();
+                newStackedBar.ykey2 = c.Expenses.Where(e => e.DateRecorded.Year == DateTime.Today.Year).Where(e => e.DateRecorded.Month == DateTime.Today.Month).Select(e => e.Cost).Sum().ToString();
+
+
+
+                //if (c.Expenses != null)
+                //{
+                //    newStackedBar.ykey2 = c.Expenses.Where(e => e.DateRecorded.Year == DateTime.Today.Year).Where(e => e.DateRecorded.Month == DateTime.Today.Month).Select(e => e.Cost).Sum().ToString();
+
+                //}
+                //else
+                //{
+                //    newStackedBar.ykey2 = "0";
+
+                //}
                     
-             
-                    //if (c.Expenses == null)
-                    //{"0"}
-                    //else
-                    //    c.Expenses.Where(e => e.DateRecorded.Year == DateTime.Today.Year).Where(e => e.DateRecorded.Month == DateTime.Today.Month).Select(e => e.Cost).Sum().ToString();
                 bs.Add(newStackedBar);
             }
 
@@ -53,10 +64,20 @@ namespace BudgetApp.Controllers
 
         public ActionResult Index()
         {
-            var totalBudget = db.Categories.Select(c => c.BudgetCost).Sum();
-            ViewBag.TotalBudget = totalBudget;
+            if (db.Categories.Count() == 0)
+            {
+                ViewBag.TotalBudget = "No Set";
+                return View();
+            }
+            else
+            {
 
-            return View();
+                var totalBudget = db.Categories.Select(c => c.BudgetCost).Sum();
+                ViewBag.TotalBudget = totalBudget;
+                return View();
+            }
+
+            
         }
 
         public ActionResult About()

@@ -1,5 +1,6 @@
 namespace BudgetApp.Migrations
 {
+    using BudgetApp.Models;
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
@@ -26,6 +27,22 @@ namespace BudgetApp.Migrations
             //      new Person { FullName = "Rowan Miller" }
             //    );
             //
+
+            var newBudget1 = new Budget
+            {
+                Name = "James' Budget",
+                StartDate = new DateTime(2016, 1, 1),
+                EndDate = new DateTime (2016, 12, 31),
+                
+
+            };
+
+            context.Budgets.AddOrUpdate(newBudget1);
+
+            context.SaveChanges();
+
+            context.Configuration.LazyLoadingEnabled = true;
+            
         }
     }
 }
