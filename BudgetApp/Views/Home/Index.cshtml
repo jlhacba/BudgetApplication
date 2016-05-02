@@ -15,6 +15,10 @@
         <div>
             <p style="position: center">
                 <h1 style="font-weight: bold">Monthly Budget: $@ViewBag.TotalBudget</h1>
+                <h1 style="font-weight: bold">Monthly Budget Spent: $@ViewBag.SpentBudget</h1>
+                <h1 style="font-weight: bold">Monthly Budget Remaining: $@ViewBag.RemainingBudget</h1>
+
+
             </p>
             <div id="completedDonut"></div>
             <script>
@@ -53,7 +57,7 @@
     <div id="box2">
         <div>
             <p style="position: center">
-                <h1 style="font-weight: bold">Budget Left</h1>
+                <h1 style="font-weight: bold">Budget Breakdown</h1>
             </p>
             <div id="completedBarStacked"></div>
             <script>
@@ -64,15 +68,12 @@
                     success: function (result) {
                         Morris.Bar({
                             element: 'completedBarStacked',
-                            stacked: true,
+                            //stacked: true,
                             data: result,
                             xkey: 'xkey',
                             ykeys: ['ykey1', 'ykey2'],
-                            labels: ['Series A', 'Series B'],
-                            barColors: [
-                                '#A9F5A9',
-                                '#5882FA'
-                            ],
+                            labels: ['Remaining', 'Spent'],
+                            barColors: ['#FA5882', '#2E9AFE'],
                         });
                     },
                     error: function () {

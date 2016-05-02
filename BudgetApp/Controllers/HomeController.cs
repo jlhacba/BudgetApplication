@@ -36,12 +36,14 @@ namespace BudgetApp.Controllers
             {
 
 
-                //var value = c.Expenses.Count();
+                var expenses = c.Expenses.Where(e => e.DateRecorded.Year == DateTime.Today.Year).Where(e => e.DateRecorded.Month == DateTime.Today.Month).Select(e => e.Cost).Sum();
+                var budgetLeft = c.BudgetCost - expenses;
+
 
                 var newStackedBar = new StackedBar();
                 newStackedBar.xkey = c.Name.ToString();
-                newStackedBar.ykey1 = c.BudgetCost.ToString();
-                newStackedBar.ykey2 = c.Expenses.Where(e => e.DateRecorded.Year == DateTime.Today.Year).Where(e => e.DateRecorded.Month == DateTime.Today.Month).Select(e => e.Cost).Sum().ToString();
+                newStackedBar.ykey1 = budgetLeft.ToString() ;
+                newStackedBar.ykey2 = expenses.ToString();
 
 
 
@@ -66,7 +68,7 @@ namespace BudgetApp.Controllers
         {
             if (db.Categories.Count() == 0)
             {
-                ViewBag.TotalBudget = "No Set";
+                ViewBag.TotalBudget = "Not Set";
                 return View();
             }
             else
@@ -74,6 +76,13 @@ namespace BudgetApp.Controllers
 
                 var totalBudget = db.Categories.Select(c => c.BudgetCost).Sum();
                 ViewBag.TotalBudget = totalBudget;
+
+                var spentBudget = db.Expenses.Select(e => e.Cost).Sum();
+                ViewBag.SpentBudget = spentBudget;
+
+                var remainingBudget = totalBudget - db.Expenses.Select(e => e.Cost).Sum();
+                ViewBag.RemainingBudget = remainingBudget;
+
                 return View();
             }
 
