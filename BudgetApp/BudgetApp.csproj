@@ -301,6 +301,9 @@
     <Content Include="Views\Expenses\Details.cshtml" />
     <Content Include="Views\Expenses\Edit.cshtml" />
     <Content Include="Views\Expenses\Index.cshtml" />
+    <Content Include="Views\Home\BudgetDashboard.cshtml" />
+    <Content Include="Views\Home\BudgetMonthlyPartial.cshtml" />
+    <Content Include="Views\Home\BudgetAnnualPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

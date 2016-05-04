@@ -77,6 +77,63 @@ namespace BudgetApp.Controllers
             
         }
 
+        public ActionResult BudgetDashboard()
+        {
+            return View();
+        }
+
+
+        public ActionResult BudgetMonthlyPartial()
+        {
+            if (db.Categories.Count() == 0)
+            {
+                ViewBag.TotalBudget = "Not Set";
+                return View();
+            }
+            else
+            {
+
+                var totalBudget = db.Categories.Select(c => c.BudgetCost).Sum();
+                ViewBag.TotalBudget = totalBudget;
+
+                var spentBudget = db.Expenses.Select(e => e.Cost).Sum();
+                ViewBag.SpentBudget = spentBudget;
+
+                var remainingBudget = totalBudget - db.Expenses.Select(e => e.Cost).Sum();
+                ViewBag.RemainingBudget = remainingBudget;
+
+                return PartialView();
+            }
+
+
+        }
+
+        public ActionResult BudgetAnnualPartial()
+        {
+            if (db.Categories.Count() == 0)
+            {
+                ViewBag.TotalBudget = "Not Set";
+                return PartialView();
+            }
+            else
+            {
+
+                var totalBudget = db.Categories.Select(c => c.BudgetCost).Sum();
+                ViewBag.TotalBudget = totalBudget;
+
+                var spentBudget = db.Expenses.Select(e => e.Cost).Sum();
+                ViewBag.SpentBudget = spentBudget;
+
+                var remainingBudget = totalBudget - db.Expenses.Select(e => e.Cost).Sum();
+                ViewBag.RemainingBudget = remainingBudget;
+
+                return PartialView();
+            }
+
+
+        }
+
+
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";

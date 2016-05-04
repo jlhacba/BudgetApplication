@@ -1,0 +1,67 @@
+﻿
+@{
+    ViewBag.Title = "BudgetDashboard";
+}
+
+<h2>BudgetDashboard</h2>
+
+<div class="btn-group-xs btn-group-justified btn" role="group" aria-label="...">
+    <a id="monthly" class="btn btn-xs btn-primary" style="font-size:16px">View Monthly Budget</a>
+    <a id="annual" class="btn btn-xs btn-default" style="font-size:16px">View Annual Budget</a>
+</div>
+<br />
+
+
+<div id="myPartial"></div>
+
+<script>
+    $(document).ready(function () {
+        var diff = "All";
+        $('#myPartial').load('/Home/BudgetMonthlyPartial?userChoice=' + diff);
+        $('#monthly').click(function () {
+            $('#diffdrop').show();
+            $('#myPartial').unload('/Home/BudgetAnnualPartial');
+            $('#myPartial').load('/Home/BudgetMonthlyPartial?userChoice=' + diff);
+            $('#myPartial').unload('/Home/BudgetWeeklyPartial');
+            $('#monthly').removeClass('btn-default');
+            $('#monthly').addClass('btn-primary');
+            $('#annual').removeClass('btn-primary');
+            $('#annual').addClass('btn-default');
+            //$('#lead').removeClass('btn-primary');
+            //$('#lead').addClass('btn-default');
+        });
+        $('#annual').click(function () {
+            $('#diffdrop').hide();
+            $('#myPartial').load('/Home/BudgetAnnualPartial');
+            $('#myPartial').unload('/Home/BudgetMonthlyPartial?userChoice=' + diff);
+            $('#myPartial').unload('/Home/BudgetWeeklyPartial');
+            $('#monthly').removeClass('btn-primary');
+            $('#monthly').addClass('btn-default');
+            $('#annual').removeClass('btn-default');
+            $('#annual').addClass('btn-primary');
+            //$('#lead').removeClass('btn-primary');
+            //$('#lead').addClass('btn-default');
+        });
+        //$('#lead').click(function () {
+        //    $('#diffdrop').hide();
+        //    $('#myPartial').load('/Student/StudentLeaderboardPartial');
+        //    $('#myPartial').unload('/Home/BudgetMonthlyPartial');
+        //    $('#myPartial').unload('/Student/StudentChallengesPartial?userChoice=' + diff);
+        //    $('#challenges').removeClass('btn-primary');
+        //    $('#challenges').addClass('btn-default');
+        //    $('#graphs').removeClass('btn-primary');
+        //    $('#graphs').addClass('btn-default');
+        //    $('#lead').removeClass('btn-default');
+        //    $('#lead').addClass('btn-primary');
+        //});
+        $('#diffdrop').change(function () {
+            $('#myPartial').unload('/Home/BudgetMonthlyPartial?userChoice=' + diff);
+            diff = $('#diffdrop option:selected').val();
+            $('#myPartial').load('/Home/BudgetMonthlyPartial?userChoice=' + diff);
+            console.log(diff);
+        });
+    });
+
+
+
+</script>
