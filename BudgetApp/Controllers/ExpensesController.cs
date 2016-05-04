@@ -39,7 +39,7 @@ namespace BudgetApp.Controllers
         // GET: Expenses/Create
         public ActionResult Create()
         {
-            ViewBag.CategoryID = new SelectList(db.Categories, "CategoryID", "Name");
+            ViewBag.CategoryID = new SelectList(db.Categories, "CategoryID", "Type");
             return View();
         }
 
@@ -57,7 +57,7 @@ namespace BudgetApp.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.CategoryID = new SelectList(db.Categories, "CategoryID", "Name", expense.CategoryID);
+            ViewBag.CategoryID = new SelectList(db.Categories, "CategoryID", "Type", expense.CategoryID);
             return View(expense);
         }
 

@@ -38,11 +38,25 @@ namespace BudgetApp.Controllers
                 var totalBudget = db.Categories.Select(c => c.BudgetCost).Sum();
                 ViewBag.TotalBudget = totalBudget;
 
-                var spentBudget = db.Expenses.Select(e => e.Cost).Sum();
-                ViewBag.SpentBudget = spentBudget;
+                if (db.Expenses.Count() == 0)
+                {
+                    ViewBag.SpentBudget = 0;
+                }
+                else
+                {
+                    var spentBudget = db.Expenses.Select(e => e.Cost).Sum();
+                    ViewBag.SpentBudget = spentBudget;
+                }
 
-                var remainingBudget = totalBudget - db.Expenses.Select(e => e.Cost).Sum();
-                ViewBag.RemainingBudget = remainingBudget;
+                if (db.Expenses.Count() == 0)
+                {
+                    ViewBag.RemainingBudget = totalBudget;
+                }
+                else
+                {
+                    var remainingBudget = totalBudget - db.Expenses.Select(e => e.Cost).Sum();
+                    ViewBag.RemainingBudget = remainingBudget;
+                }
 
                 return View();
             }
@@ -100,11 +114,25 @@ namespace BudgetApp.Controllers
                 var totalBudget = db.Categories.Where(c => c.Occurance == "Monthly").Select(c => c.BudgetCost).Sum();
                 ViewBag.TotalBudget = totalBudget;
 
-                var spentBudget = db.Expenses.Where(c => c.Category.Occurance == "Monthly").Select(e => e.Cost).Sum();
-                ViewBag.SpentBudget = spentBudget;
+                if (db.Expenses.Where(e => e.DateRecorded.Year == DateTime.Today.Year).Where(e => e.DateRecorded.Month == DateTime.Today.Month).Count() == 0)
+                {
+                    ViewBag.SpentBudget = 0;
+                }
+                else
+                {
+                    var spentBudget = db.Expenses.Where(e => e.DateRecorded.Year == DateTime.Today.Year).Where(e => e.DateRecorded.Month == DateTime.Today.Month).Where(c => c.Category.Occurance == "Monthly").Select(e => e.Cost).Sum();
+                    ViewBag.SpentBudget = spentBudget;
+                }
 
-                var remainingBudget = totalBudget - db.Expenses.Where(c => c.Category.Occurance == "Monthly").Select(e => e.Cost).Sum();
-                ViewBag.RemainingBudget = remainingBudget;
+                if (db.Expenses.Where(e => e.DateRecorded.Year == DateTime.Today.Year).Where(e => e.DateRecorded.Month == DateTime.Today.Month).Count() == 0)
+                {
+                    ViewBag.RemainingBudget = totalBudget;
+                }
+                else
+                {
+                    var remainingBudget = totalBudget - db.Expenses.Where(c => c.Category.Occurance == "Monthly").Select(e => e.Cost).Sum();
+                    ViewBag.RemainingBudget = remainingBudget;
+                }
 
                 return PartialView();
 
@@ -119,11 +147,22 @@ namespace BudgetApp.Controllers
             foreach (var c in db.Categories)
             {
                 var newDonut = new Donut();
-                var annualBudget = c.BudgetCost * 12;
 
-                newDonut.value = annualBudget.ToString();
-                newDonut.label = c.Type;
-                pf.Add(newDonut);
+                if (c.Occurance == "Monthly")
+                {
+                    var annualBudget = c.BudgetCost * 12;
+                    newDonut.value = annualBudget.ToString();
+                    newDonut.label = c.Type;
+                    pf.Add(newDonut);
+                }
+                else
+                {
+                    var annualBudget = c.BudgetCost;
+                    newDonut.value = annualBudget.ToString();
+                    newDonut.label = c.Type;
+                    pf.Add(newDonut);
+                }
+
             }
 
             return Json(pf, JsonRequestBehavior.AllowGet);
@@ -136,18 +175,34 @@ namespace BudgetApp.Controllers
             foreach (var c in db.Categories.Include("Expenses"))
             {
 
+                if (c.Occurance == "Monthly")
+                {
+                    var expenses = c.Expenses.Where(e => e.DateRecorded.Year == DateTime.Today.Year).Select(e => e.Cost).Sum();
+                    var budgetLeft = (c.BudgetCost * 12) - (expenses);
 
-                var expenses = c.Expenses.Where(e => e.DateRecorded.Year == DateTime.Today.Year).Where(e => e.DateRecorded.Month == DateTime.Today.Month).Select(e => e.Cost).Sum();
-                var budgetLeft = (c.BudgetCost * 12)- (expenses * 12);
+                    var newStackedBar = new StackedBar();
+                    newStackedBar.xkey = c.Type.ToString();
+                    // newStackedBar.xkey = "a[href^='http://stackoverflow.com']";
+                    newStackedBar.ykey1 = budgetLeft.ToString();
+                    newStackedBar.ykey2 = expenses.ToString();
 
+                    bs.Add(newStackedBar);
 
-                var newStackedBar = new StackedBar();
-                newStackedBar.xkey = c.Type.ToString();
-                // newStackedBar.xkey = "a[href^='http://stackoverflow.com']";
-                newStackedBar.ykey1 = budgetLeft.ToString();
-                newStackedBar.ykey2 = expenses.ToString();
+                }
+                else
+                {
+                    var expenses = c.Expenses.Where(e => e.DateRecorded.Year == DateTime.Today.Year).Select(e => e.Cost).Sum();
+                    var budgetLeft = (c.BudgetCost ) - (expenses );
 
-                bs.Add(newStackedBar);
+                    var newStackedBar = new StackedBar();
+                    newStackedBar.xkey = c.Type.ToString();
+                    // newStackedBar.xkey = "a[href^='http://stackoverflow.com']";
+                    newStackedBar.ykey1 = budgetLeft.ToString();
+                    newStackedBar.ykey2 = expenses.ToString();
+
+                    bs.Add(newStackedBar);
+                }
+
             }
 
             return Json(bs, JsonRequestBehavior.AllowGet);
@@ -162,15 +217,29 @@ namespace BudgetApp.Controllers
             }
             else
             {
-
+                
                 var totalBudget = db.Categories.Select(c => c.BudgetCost).Sum() * 12;
                 ViewBag.TotalBudget = totalBudget;
 
-                var spentBudget = db.Expenses.Select(e => e.Cost).Sum() * 12;
-                ViewBag.SpentBudget = spentBudget;
+                if (db.Expenses.Count() == 0)
+                {
+                    ViewBag.SpentBudget = 0;
+                }
+                else
+                {
+                    var spentBudget = db.Expenses.Where(e => e.DateRecorded.Year == DateTime.Today.Year).Select(e => e.Cost).Sum();
+                    ViewBag.SpentBudget = spentBudget;
+                }
 
-                var remainingBudget = (totalBudget * 12) - (db.Expenses.Select(e => e.Cost).Sum() *12);
-                ViewBag.RemainingBudget = remainingBudget;
+                if (db.Expenses.Count() == 0)
+                {
+                    ViewBag.RemainingBudget = totalBudget;
+                }
+                else
+                {
+                    var remainingBudget = (totalBudget * 12) - (db.Expenses.Select(e => e.Cost).Sum());
+                    ViewBag.RemainingBudget = remainingBudget;
+                }
 
                 return PartialView();
             }
