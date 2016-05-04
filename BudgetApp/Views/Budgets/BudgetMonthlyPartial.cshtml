@@ -1,6 +1,4 @@
-﻿@{
-    ViewBag.Title = "Home Page";
-}
+﻿
 
 <script src="~/Scripts/morris.js"></script>
 <script src="~/Scripts/morris.min.js"></script>
@@ -23,7 +21,7 @@
             <div id="completedDonut"></div>
             <script>
                 $.ajax({
-                    url: '/Home/BudgetChart/',
+                    url: '/Budgets/BudgetMonthChart/',
                     type: "POST",
                     dataType: "json",
                     success: function (result) {
@@ -62,7 +60,7 @@
             <div id="completedBarStacked"></div>
             <script>
                 $.ajax({
-                    url: '/Home/BudgetBarStacked/',
+                    url: '/Budgets/BudgetMonthBarStacked/',
                     type: "POST",
                     dataType: "json",
                     success: function (result) {

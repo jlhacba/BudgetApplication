@@ -17,12 +17,12 @@
 <script>
     $(document).ready(function () {
         var diff = "All";
-        $('#myPartial').load('/Home/BudgetMonthlyPartial?userChoice=' + diff);
+        $('#myPartial').load('/Budgets/BudgetMonthlyPartial?userChoice=' + diff);
         $('#monthly').click(function () {
             $('#diffdrop').show();
-            $('#myPartial').unload('/Home/BudgetAnnualPartial');
-            $('#myPartial').load('/Home/BudgetMonthlyPartial?userChoice=' + diff);
-            $('#myPartial').unload('/Home/BudgetWeeklyPartial');
+            $('#myPartial').unload('/Budgets/BudgetAnnualPartial');
+            $('#myPartial').load('/Budgets/BudgetMonthlyPartial?userChoice=' + diff);
+            $('#myPartial').unload('/Budgets/BudgetWeeklyPartial');
             $('#monthly').removeClass('btn-default');
             $('#monthly').addClass('btn-primary');
             $('#annual').removeClass('btn-primary');
@@ -32,9 +32,9 @@
         });
         $('#annual').click(function () {
             $('#diffdrop').hide();
-            $('#myPartial').load('/Home/BudgetAnnualPartial');
-            $('#myPartial').unload('/Home/BudgetMonthlyPartial?userChoice=' + diff);
-            $('#myPartial').unload('/Home/BudgetWeeklyPartial');
+            $('#myPartial').load('/Budgets/BudgetAnnualPartial');
+            $('#myPartial').unload('/Budgets/BudgetMonthlyPartial?userChoice=' + diff);
+            $('#myPartial').unload('/Budgets/BudgetWeeklyPartial');
             $('#monthly').removeClass('btn-primary');
             $('#monthly').addClass('btn-default');
             $('#annual').removeClass('btn-default');
@@ -55,9 +55,9 @@
         //    $('#lead').addClass('btn-primary');
         //});
         $('#diffdrop').change(function () {
-            $('#myPartial').unload('/Home/BudgetMonthlyPartial?userChoice=' + diff);
+            $('#myPartial').unload('/Budgets/BudgetMonthlyPartial?userChoice=' + diff);
             diff = $('#diffdrop option:selected').val();
-            $('#myPartial').load('/Home/BudgetMonthlyPartial?userChoice=' + diff);
+            $('#myPartial').load('/Budgets/BudgetMonthlyPartial?userChoice=' + diff);
             console.log(diff);
         });
     });
