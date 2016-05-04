@@ -52,7 +52,7 @@ namespace BudgetApp.Controllers
         {
             var pf = new List<Donut>();
 
-            foreach (var c in db.Categories)
+            foreach (var c in db.Categories.Where(c => c.Occurance == "Monthly"))
             {
                 var newDonut = new Donut();
                 newDonut.value = c.BudgetCost.ToString();
@@ -67,7 +67,7 @@ namespace BudgetApp.Controllers
         {
             var bs = new List<StackedBar>();
 
-            foreach (var c in db.Categories.Include("Expenses"))
+            foreach (var c in db.Categories.Include("Expenses").Where(c => c.Occurance == "Monthly"))
             {
 
 
@@ -97,18 +97,18 @@ namespace BudgetApp.Controllers
             else
             {
 
-                var totalBudget = db.Categories.Select(c => c.BudgetCost).Sum();
+                var totalBudget = db.Categories.Where(c => c.Occurance == "Monthly").Select(c => c.BudgetCost).Sum();
                 ViewBag.TotalBudget = totalBudget;
 
-                var spentBudget = db.Expenses.Select(e => e.Cost).Sum();
+                var spentBudget = db.Expenses.Where(c => c.Category.Occurance == "Monthly").Select(e => e.Cost).Sum();
                 ViewBag.SpentBudget = spentBudget;
 
-                var remainingBudget = totalBudget - db.Expenses.Select(e => e.Cost).Sum();
+                var remainingBudget = totalBudget - db.Expenses.Where(c => c.Category.Occurance == "Monthly").Select(e => e.Cost).Sum();
                 ViewBag.RemainingBudget = remainingBudget;
 
                 return PartialView();
-            }
 
+            }
 
         }
 

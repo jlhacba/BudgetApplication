@@ -13,6 +13,7 @@ namespace BudgetApp.Models
         [DisplayName ("Budget")]
         public decimal BudgetCost { get; set; }
         public string Type { get; set; }
+        public string Occurance { get; set; }
         public int BudgetID { get; set; }
         public virtual Budget Budget { get; set; }
         public virtual List<Expense> Expenses { get; set; }

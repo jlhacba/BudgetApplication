@@ -41,6 +41,17 @@
             </div>
         </div>
 
+        <div class="form-group">
+            @Html.Label("Type", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <select name="occurance" style="color:black">
+
+                    <option value="Monthly">Monthly</option>
+                    <option value="Annually">Annually</option>
+                </select>
+                <span class="required"></span>
+            </div>
+        </div>
 
         <div class="form-group">
             @Html.LabelFor(model => model.BudgetID, "Budget", htmlAttributes: new { @class = "control-label col-md-2" })
