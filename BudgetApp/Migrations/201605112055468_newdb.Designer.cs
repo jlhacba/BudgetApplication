@@ -13,7 +13,7 @@ namespace BudgetApp.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201605021902433_newdb"; }
+            get { return "201605112055468_newdb"; }
         }
         
         string IMigrationMetadata.Source

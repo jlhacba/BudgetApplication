@@ -26,6 +26,7 @@ namespace BudgetApp.Migrations
                         Name = c.String(),
                         BudgetCost = c.Decimal(nullable: false, precision: 18, scale: 2),
                         Type = c.String(),
+                        Occurance = c.String(),
                         BudgetID = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.CategoryID)

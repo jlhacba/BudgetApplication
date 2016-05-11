@@ -37,7 +37,40 @@ namespace BudgetApp.Migrations
 
             };
 
+            var newCat1 = new Category
+            {
+                Type = "Rent",
+                BudgetCost = 1055,
+                Occurance = "Monthly",
+                Budget = newBudget1
+            };
+
+            var newCat2 = new Category
+            {
+                Type = "Utilities",
+                BudgetCost = 200,
+                Occurance = "Monthly",
+                Budget = newBudget1
+            };
+
+            var newCat3 = new Category
+            {
+                Type = "Restaurants",
+                BudgetCost = 475,
+                Occurance = "Monthly",
+                Budget = newBudget1
+            };
+
+            var newCat4 = new Category
+            {
+                Type = "Auto Insurance",
+                BudgetCost = 1047,
+                Occurance = "Annual",
+                Budget = newBudget1
+            };
+
             context.Budgets.AddOrUpdate(newBudget1);
+            context.Categories.AddOrUpdate(newCat1, newCat2, newCat3, newCat4);
 
             context.SaveChanges();
 

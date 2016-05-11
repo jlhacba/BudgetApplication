@@ -167,13 +167,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201605021902433_newdb.cs" />
-    <Compile Include="Migrations\201605021902433_newdb.Designer.cs">
-      <DependentUpon>201605021902433_newdb.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201605042146308_occurprop.cs" />
-    <Compile Include="Migrations\201605042146308_occurprop.Designer.cs">
-      <DependentUpon>201605042146308_occurprop.cs</DependentUpon>
+    <Compile Include="Migrations\201605112055468_newdb.cs" />
+    <Compile Include="Migrations\201605112055468_newdb.Designer.cs">
+      <DependentUpon>201605112055468_newdb.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -320,11 +316,8 @@
     <None Include="Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201605021902433_newdb.resx">
-      <DependentUpon>201605021902433_newdb.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201605042146308_occurprop.resx">
-      <DependentUpon>201605042146308_occurprop.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201605112055468_newdb.resx">
+      <DependentUpon>201605112055468_newdb.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
